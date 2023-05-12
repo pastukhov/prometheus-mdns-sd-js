@@ -17,13 +17,13 @@ function filltarget(service) {
   };
   targets.push(target);
   console.log(targets);
-  writeFileAtomic(prometheus_sd_file, JSON.stringify(targets), reloadVMAgent());
+  writeFileAtomic(prometheus_sd_file, JSON.stringify(targets, null, 4), reloadVMAgent());
 }
 
 function cleantarget(service) {
   targets = targets.filter(target => target.labels.instance !== service.name);
   console.log(targets);
-  writeFileAtomic(prometheus_sd_file, JSON.stringify(targets), reloadVMAgent());
+  writeFileAtomic(prometheus_sd_file, JSON.stringify(targets, null, 4), reloadVMAgent());
 }
 
 async function reloadVMAgent() {
