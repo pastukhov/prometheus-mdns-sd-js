@@ -29,7 +29,6 @@ function cleantarget(service) {
 async function reloadVMAgent() {
   try {
     const response = await axios.post(vmagent_address);
-    console.log(response);
   } catch (error) {
     console.error(error);
   }
