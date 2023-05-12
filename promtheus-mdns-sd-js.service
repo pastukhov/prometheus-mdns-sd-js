@@ -1,0 +1,22 @@
+[Unit]
+Description=Prometheus mdns service discovery service
+After=docker.servic
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=30
+Restart=always
+RestartSec=30
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker run --rm \
+        --name %n \
+        --read-only \
+        -v /opt/vmagent:/opt/vmagent \
+        --network host \
+        --env PROMETHEUS_SD_FILE=/opt/vmagent/mdns-sd.json \
+        --env VMAGENT_ADDRESS=http://localhost:8429/-/reload \
+        pastukhov/prometheus-mdns-sd-js:latest
+
+[Install]
+WantedBy=multi-user.target
