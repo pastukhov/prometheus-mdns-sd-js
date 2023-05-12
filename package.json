@@ -1,0 +1,19 @@
+{
+  "name": "mdns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Artem Pastukhov",
+  "license": "ISC",
+  "dependencies": {
+    "dnssd": "0.4.1",
+    "write-file-atomic": "5.0.1",
+    "axios": "^0.21"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
